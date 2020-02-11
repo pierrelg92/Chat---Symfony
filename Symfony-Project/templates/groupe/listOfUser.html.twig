@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<body>
+	<div class="container">
+			<div class="inbox_msg mt-5">
+				<div class="headind_srch">
+						<div class="row">
+							<div class="col d-flex align-items-center">
+								<h4>Manage group users</h4>
+							</div>
+							<div class="col ml-auto">
+								<img src="{{ asset('logo/logo.png') }}" id="icon" alt="User Icon"/>
+							</div>
+						</div>
+				</div>
+			
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Firstname</th>
+      <th scope="col">Manage</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for user in users %}
+    <tr>
+      <td>{{ user.username }}</td>
+      {% if group not in user.groups %}
+      <td><button type="button" class="btn-lg btn-info"><a href="{{ path('addUserIntoGr', {userId : user.id, groupId : groupId}) }}" style="text-decoration:none; color:white;">></a>Add</button></td>
+      {% else %}
+      <td><button type="button" class="btn-lg btn-info"><a href="{{ path('deleteUserFromGr', {userId : user.id, groupId : groupId}) }}" style="text-decoration:none; color:white;">></a>Delete</button></td>
+      {% endif %}
+    </tr>
+     {% endfor %}
+  </tbody>
+</table>
+
+			</div>
+			<div class="row mt-3 mb-3">
+				<div class="col">
+					<button type="button" class="btn-lg btn-info"><a href="{{ path('index') }}" style="text-decoration:none; color:white;">Retour aux groupes <</a></button>
+				</div>
+				<div class="col">
+					<button type="button" class="btn-lg btn-danger"><a href="{{ path('logout') }}" style="text-decoration:none; color:white;">Log Out</button>
+				</div>
+			</div>
+		</body>
+	{% endblock %}
