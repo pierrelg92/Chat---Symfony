@@ -1,3 +1,3 @@
 Rendu Chat - Symfony
 
-Groupe: Pierre Le Gras, Thomas Seguin [B2a]
+Groupe: Pierre Le Gras, Thomas Seguin
